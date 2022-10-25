@@ -23,6 +23,17 @@ export declare const fillAndMap: <T>(n: number, fn: (el: null, idx: number) => T
  */
 export declare const getNonZeroIndices: (arr: number[]) => number[];
 /**
+ * interpolates between two 1d array of any size. for now, numbers only.
+ *
+ * TODO:
+ * - expand to take object, nested aray/ojbects. recursive.
+ * @param arrStart array to start from
+ * @param arrTarget array to interpolate to
+ * @param t 0..1
+ * @returns 1d array
+ */
+export declare const interpolateArray: (arrStart: number[], arrTarget: number[], t: number) => number[];
+/**
  * check if all values of array is one.
  * @param arr array to evaluate
  * @returns true if all values are one

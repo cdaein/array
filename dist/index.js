@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.unwrapArrayOfObjects = exports.isAnyZero = exports.isAnyOne = exports.isAllZero = exports.isAllOne = exports.getNonZeroIndices = exports.fillAndMap = exports.addToArray = void 0;
+exports.unwrapArrayOfObjects = exports.isAnyZero = exports.isAnyOne = exports.isAllZero = exports.isAllOne = exports.interpolateArray = exports.getNonZeroIndices = exports.fillAndMap = exports.addToArray = void 0;
+const math_1 = require("@daeinc/math");
 /**
  * add to array in-place while limiting how many to keep history.
  *
@@ -54,6 +55,28 @@ const getNonZeroIndices = (arr) => {
     return result;
 };
 exports.getNonZeroIndices = getNonZeroIndices;
+/**
+ * interpolates between two 1d array of any size. for now, numbers only.
+ *
+ * TODO:
+ * - expand to take object, nested aray/ojbects. recursive.
+ * @param arrStart array to start from
+ * @param arrTarget array to interpolate to
+ * @param t 0..1
+ * @returns 1d array
+ */
+const interpolateArray = (arrStart, arrTarget, t) => {
+    if (arrStart.length === 0 || arrTarget.length === 0)
+        throw new Error("interpolateArray(): arrays cannot be empty");
+    if (arrStart.length !== arrTarget.length)
+        throw new Error("interpolateArray(): length must be same");
+    return Array(arrStart.length)
+        .fill(0)
+        .map((_, i) => {
+        return (0, math_1.mix)(arrStart[i], arrTarget[i], t);
+    });
+};
+exports.interpolateArray = interpolateArray;
 /**
  * check if all values of array is one.
  * @param arr array to evaluate

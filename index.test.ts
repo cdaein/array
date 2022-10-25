@@ -3,6 +3,7 @@ import {
   addToArray,
   fillAndMap,
   getNonZeroIndices,
+  interpolateArray,
   isAllOne,
   isAllZero,
   isAnyOne,
@@ -40,6 +41,37 @@ describe("getNonZeroIndices()", () => {
   });
   test("returns 0-length array with all zero values", () => {
     expect(getNonZeroIndices(arr2)).toEqual([]);
+  });
+});
+
+describe("interpolateArray()", () => {
+  const arr1 = [0, 10, 20, 30];
+  const arr2 = [10, 20, 30, 40];
+
+  test("throws error when either arr length is 0", () => {
+    expect(() => interpolateArray([], arr2, 0.0)).toThrow(
+      "arrays cannot be empty"
+    );
+    expect(() => interpolateArray(arr1, [], 0.0)).toThrow(
+      "arrays cannot be empty"
+    );
+  });
+  test("throws error when arrays don't have same length", () => {
+    expect(() => interpolateArray(arr1, arr1.slice(1, 3), 0.0)).toThrow(
+      "length must be same"
+    );
+    expect(() => interpolateArray(arr2.slice(0, 3), arr2, 0.0)).toThrow(
+      "length must be same"
+    );
+  });
+  test("returns pathStart at t=0", () => {
+    expect(interpolateArray(arr1, arr2, 0.0)).toStrictEqual(arr1);
+  });
+  test("returns pathTarget at t=1", () => {
+    expect(interpolateArray(arr1, arr2, 1.0)).toStrictEqual(arr2);
+  });
+  test("returns in-between values at any t=0..1", () => {
+    expect(interpolateArray(arr1, arr2, 0.5)).toStrictEqual([5, 15, 25, 35]);
   });
 });
 
