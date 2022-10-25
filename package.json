@@ -30,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/cdaein/array/issues"
   },
-  "homepage": "https://github.com/cdaein/array#readme"
+  "homepage": "https://github.com/cdaein/array#readme",
+  "dependencies": {
+    "@daeinc/math": "^0.2.0"
+  }
 }
