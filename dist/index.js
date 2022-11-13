@@ -1,7 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.unwrapArrayOfObjects = exports.isAnyZero = exports.isAnyOne = exports.isAllZero = exports.isAllOne = exports.interpolateArray = exports.getNonZeroIndices = exports.fillAndMap = exports.addToArray = void 0;
+exports.unwrapArrayOfObjects = exports.isAnyZero = exports.isAnyOne = exports.isAllZero = exports.isAllOne = exports.interpolateArray = exports.getNonZeroIndices = exports.fillAndMap = exports.addToArray = exports.accumulate = void 0;
 const math_1 = require("@daeinc/math");
+/**
+ * accumulate array values. ex. [50,50,50] => [50,100,150]
+ * @param arr
+ * @returns
+ */
+const accumulate = (arr) => {
+    const result = [];
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+        result.push(sum);
+    }
+    return result;
+};
+exports.accumulate = accumulate;
 /**
  * add to array in-place while limiting how many to keep history.
  *

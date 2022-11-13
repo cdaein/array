@@ -1,5 +1,6 @@
 import { describe, expect, test } from "@jest/globals";
 import {
+  accumulate,
   addToArray,
   fillAndMap,
   getNonZeroIndices,
@@ -10,6 +11,13 @@ import {
   isAnyZero,
   unwrapArrayOfObjects,
 } from "./index";
+
+describe("accumulate()", () => {
+  test("adds up values in array", () => {
+    expect(accumulate([50, 100, 150])).toEqual([50, 150, 300]);
+    expect(accumulate([50, 50, 50])).toEqual([50, 100, 150]);
+  });
+});
 
 describe("addToArray()", () => {
   test("adds new elements of number type to input array in place", () => {

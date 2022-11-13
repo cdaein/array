@@ -1,4 +1,10 @@
 /**
+ * accumulate array values. ex. [50,50,50] => [50,100,150]
+ * @param arr
+ * @returns
+ */
+export declare const accumulate: (arr: number[]) => number[];
+/**
  * add to array in-place while limiting how many to keep history.
  *
  * "first" will insert at beginning of array.

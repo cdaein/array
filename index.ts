@@ -1,6 +1,21 @@
 import { mix } from "@daeinc/math";
 
 /**
+ * accumulate array values. ex. [50,50,50] => [50,100,150]
+ * @param arr
+ * @returns
+ */
+export const accumulate = (arr: number[]) => {
+  const result = [];
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+    result.push(sum);
+  }
+  return result;
+};
+
+/**
  * add to array in-place while limiting how many to keep history.
  *
  * "first" will insert at beginning of array.
