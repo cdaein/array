@@ -17,6 +17,9 @@ describe("accumulate()", () => {
     expect(accumulate([50, 100, 150])).toEqual([50, 150, 300]);
     expect(accumulate([50, 50, 50])).toEqual([50, 100, 150]);
   });
+  test("handles float rounding error", () => {
+    expect(accumulate([2.3, 2.4])).toEqual([2.3, 4.7]);
+  });
 });
 
 describe("addToArray()", () => {

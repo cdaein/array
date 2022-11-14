@@ -4,14 +4,18 @@ exports.unwrapArrayOfObjects = exports.isAnyZero = exports.isAnyOne = exports.is
 const math_1 = require("@daeinc/math");
 /**
  * accumulate array values. ex. [50,50,50] => [50,100,150]
+ *
+ * TEST: float rounding error needs more testing
+ *
  * @param arr
  * @returns
  */
-const accumulate = (arr) => {
+const accumulate = (arr, precision = 4) => {
     const result = [];
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
-        sum += arr[i];
+        sum = sum + (0, math_1.roundF)(arr[i], 4);
+        sum = (0, math_1.roundF)(sum, 4);
         result.push(sum);
     }
     return result;

@@ -1,9 +1,12 @@
 /**
  * accumulate array values. ex. [50,50,50] => [50,100,150]
+ *
+ * TEST: float rounding error needs more testing
+ *
  * @param arr
  * @returns
  */
-export declare const accumulate: (arr: number[]) => number[];
+export declare const accumulate: (arr: number[], precision?: number) => number[];
 /**
  * add to array in-place while limiting how many to keep history.
  *

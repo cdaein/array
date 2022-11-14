@@ -1,15 +1,19 @@
-import { mix } from "@daeinc/math";
+import { mix, roundF } from "@daeinc/math";
 
 /**
  * accumulate array values. ex. [50,50,50] => [50,100,150]
+ *
+ * TEST: float rounding error needs more testing
+ *
  * @param arr
  * @returns
  */
-export const accumulate = (arr: number[]) => {
+export const accumulate = (arr: number[], precision = 4) => {
   const result = [];
   let sum = 0;
   for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
+    sum = sum + roundF(arr[i], 4);
+    sum = roundF(sum, 4);
     result.push(sum);
   }
   return result;
