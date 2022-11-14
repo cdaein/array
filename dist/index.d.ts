@@ -1,5 +1,6 @@
 /**
  * accumulate array values. ex. [50,50,50] => [50,100,150]
+ * use original value while summing, but return value will be rounded
  *
  * TEST: float rounding error needs more testing
  *

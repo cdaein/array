@@ -4,6 +4,7 @@ exports.unwrapArrayOfObjects = exports.isAnyZero = exports.isAnyOne = exports.is
 const math_1 = require("@daeinc/math");
 /**
  * accumulate array values. ex. [50,50,50] => [50,100,150]
+ * use original value while summing, but return value will be rounded
  *
  * TEST: float rounding error needs more testing
  *
@@ -14,11 +15,10 @@ const accumulate = (arr, precision = 4) => {
     const result = [];
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
-        sum = sum + (0, math_1.roundF)(arr[i], 4);
-        sum = (0, math_1.roundF)(sum, 4);
+        sum = sum + arr[i];
         result.push(sum);
     }
-    return result;
+    return result.map((val) => (0, math_1.roundF)(val, 4));
 };
 exports.accumulate = accumulate;
 /**

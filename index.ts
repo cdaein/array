@@ -2,6 +2,7 @@ import { mix, roundF } from "@daeinc/math";
 
 /**
  * accumulate array values. ex. [50,50,50] => [50,100,150]
+ * use original value while summing, but return value will be rounded
  *
  * TEST: float rounding error needs more testing
  *
@@ -12,11 +13,10 @@ export const accumulate = (arr: number[], precision = 4) => {
   const result = [];
   let sum = 0;
   for (let i = 0; i < arr.length; i++) {
-    sum = sum + roundF(arr[i], 4);
-    sum = roundF(sum, 4);
+    sum = sum + arr[i];
     result.push(sum);
   }
-  return result;
+  return result.map((val) => roundF(val, 4));
 };
 
 /**
