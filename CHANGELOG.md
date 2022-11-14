@@ -1,5 +1,9 @@
 # Changelog
 
+## `0.3.2`
+
+fixed `accumulate()` rounding error - use original values while summing, and round return values
+
 ## `0.3.1`
 
 fixed `accumulate()` rounding error (hopefully)
