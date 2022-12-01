@@ -97,6 +97,19 @@ const isAnyZero: (arr: number[]) => boolean;
 
 Returns `true` if any element of input array is `0`.
 
+### objectToArray
+
+```ts
+const objectToArray: <T>(
+  obj: {
+    [key: string]: T;
+  },
+  keys: string[]
+) => T[];
+```
+
+Convert object key-value pairs into simple array of values. Only included keys will be converted. The order is preserved.
+
 ### unwrapArrayOfObjects
 
 ```ts

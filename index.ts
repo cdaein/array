@@ -130,6 +130,16 @@ export const isAnyOne = (arr: number[]) => arr.some((el) => el === 1);
 export const isAnyZero = (arr: number[]) => arr.some((el) => el === 0);
 
 /**
+ * convert object key:value pairs into simple array of values
+ * @param obj
+ * @param keys array of string keys. order is preserved.
+ * @returns
+ */
+export const objectToArray = <T>(obj: { [key: string]: T }, keys: string[]) => {
+  return keys.map((key) => obj[key]);
+};
+
+/**
  * helper function to get object values inside an array. all objects must have same keys present.
  *
  * ex. [{name: val1},{name: val2}] => fn(arr, "name") => [val1, val2]

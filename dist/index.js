@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.unwrapArrayOfObjects = exports.isAnyZero = exports.isAnyOne = exports.isAllZero = exports.isAllOne = exports.interpolateArray = exports.getNonZeroIndices = exports.fillAndMap = exports.addToArray = exports.accumulate = void 0;
+exports.unwrapArrayOfObjects = exports.objectToArray = exports.isAnyZero = exports.isAnyOne = exports.isAllZero = exports.isAllOne = exports.interpolateArray = exports.getNonZeroIndices = exports.fillAndMap = exports.addToArray = exports.accumulate = void 0;
 const math_1 = require("@daeinc/math");
 /**
  * accumulate array values. ex. [50,50,50] => [50,100,150]
@@ -124,6 +124,16 @@ exports.isAnyOne = isAnyOne;
  */
 const isAnyZero = (arr) => arr.some((el) => el === 0);
 exports.isAnyZero = isAnyZero;
+/**
+ * convert object key:value pairs into simple array of values
+ * @param obj
+ * @param keys array of string keys. order is preserved.
+ * @returns
+ */
+const objectToArray = (obj, keys) => {
+    return keys.map((key) => obj[key]);
+};
+exports.objectToArray = objectToArray;
 /**
  * helper function to get object values inside an array. all objects must have same keys present.
  *
