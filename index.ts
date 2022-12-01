@@ -147,8 +147,8 @@ export const objectToArray = <T>(obj: { [key: string]: T }, keys: string[]) => {
  * @param objKey key string of object inside source array
  * @returns array
  */
-export const unwrapArrayOfObjects = (
-  arr: { [key: string]: any }[],
+export const unwrapArrayOfObjects = <T>(
+  arr: { [key: string]: T }[],
   objKey: string
 ) => {
   return Array(arr.length)

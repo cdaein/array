@@ -84,7 +84,7 @@ export declare const objectToArray: <T>(obj: {
  * @param objKey key string of object inside source array
  * @returns array
  */
-export declare const unwrapArrayOfObjects: (arr: {
-    [key: string]: any;
-}[], objKey: string) => any[];
+export declare const unwrapArrayOfObjects: <T>(arr: {
+    [key: string]: T;
+}[], objKey: string) => T[];
 //# sourceMappingURL=index.d.ts.map

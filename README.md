@@ -110,15 +110,17 @@ const objectToArray: <T>(
 
 Convert object key-value pairs into simple array of values. Only included keys will be converted. The order is preserved.
 
+This function can be useful when converting objects with `{x, y}` to `[x, y]`, for example.
+
 ### unwrapArrayOfObjects
 
 ```ts
-const unwrapArrayOfObjects: (
+const unwrapArrayOfObjects: <T>(
   arr: {
-    [key: string]: any;
+    [key: string]: T;
   }[],
   objKey: string
-) => any[];
+) => T[];
 ```
 
 A helper function to get object values inside an array. All objects must have same keys present. For example, when the input array is `[ {name: val1}, {name: val2} ]`, calling `unwrapArrayOfObjects(arr, "name")` will return `[val1, val2]`.
