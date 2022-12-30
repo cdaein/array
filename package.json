@@ -19,6 +19,9 @@
     "jest": "^29.1.2",
     "ts-jest": "^29.0.3"
   },
+  "dependencies": {
+    "@daeinc/math": "^0.4.0"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -30,8 +33,5 @@
   "bugs": {
     "url": "https://github.com/cdaein/array/issues"
   },
-  "homepage": "https://github.com/cdaein/array#readme",
-  "dependencies": {
-    "@daeinc/math": "^0.2.0"
-  }
+  "homepage": "https://github.com/cdaein/array#readme"
 }
