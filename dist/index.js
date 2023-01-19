@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.unwrapArrayOfObjects = exports.objectToArray = exports.isAnyZero = exports.isAnyOne = exports.isAllZero = exports.isAllOne = exports.interpolateArray = exports.getNonZeroIndices = exports.fillAndMap = exports.addToArray = exports.accumulate = void 0;
-const math_1 = require("@daeinc/math");
+import { mix, roundF } from "@daeinc/math";
 /**
  * accumulate array values. ex. [50,50,50] => [50,100,150]
  * use original value while summing, but return value will be rounded
@@ -11,16 +8,15 @@ const math_1 = require("@daeinc/math");
  * @param arr
  * @returns
  */
-const accumulate = (arr, precision = 4) => {
+export const accumulate = (arr, precision = 4) => {
     const result = [];
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
         sum = sum + arr[i];
         result.push(sum);
     }
-    return result.map((val) => (0, math_1.roundF)(val, 4));
+    return result.map((val) => roundF(val, 4));
 };
-exports.accumulate = accumulate;
 /**
  * add to array in-place while limiting how many to keep history.
  *
@@ -31,7 +27,7 @@ exports.accumulate = accumulate;
  * @param mode insert where? "first" (default) | "last"
  * @returns updated array
  */
-const addToArray = (arr, entry, newArrayLen, mode = "first") => {
+export const addToArray = (arr, entry, newArrayLen, mode = "first") => {
     // add
     if (mode === "first")
         arr.unshift(entry); // add new one to beginning
@@ -46,26 +42,24 @@ const addToArray = (arr, entry, newArrayLen, mode = "first") => {
     }
     return arr;
 };
-exports.addToArray = addToArray;
 /**
  * create a new array with given length and maps values
  * @param n length of generated array
  * @param fn callback function that goes into map(fn)
  * @returns new array with mapped values
  */
-const fillAndMap = (n, fn) => {
+export const fillAndMap = (n, fn) => {
     if (n > 0) {
         return Array(n).fill(null).map(fn);
     }
     throw new Error("fillAndMap(): n must be greater than zero");
 };
-exports.fillAndMap = fillAndMap;
 /**
  * check for elements with non-zero value and return indices
  * @param arr array to evaluate
  * @returns array of indices with non-zero values
  */
-const getNonZeroIndices = (arr) => {
+export const getNonZeroIndices = (arr) => {
     const result = [];
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] !== 0)
@@ -73,7 +67,6 @@ const getNonZeroIndices = (arr) => {
     }
     return result;
 };
-exports.getNonZeroIndices = getNonZeroIndices;
 /**
  * interpolates between two 1d array of any size. for now, numbers only.
  *
@@ -84,7 +77,7 @@ exports.getNonZeroIndices = getNonZeroIndices;
  * @param t 0..1
  * @returns 1d array
  */
-const interpolateArray = (arrStart, arrTarget, t) => {
+export const interpolateArray = (arrStart, arrTarget, t) => {
     if (arrStart.length === 0 || arrTarget.length === 0)
         throw new Error("interpolateArray(): arrays cannot be empty");
     if (arrStart.length !== arrTarget.length)
@@ -92,48 +85,42 @@ const interpolateArray = (arrStart, arrTarget, t) => {
     return Array(arrStart.length)
         .fill(0)
         .map((_, i) => {
-        return (0, math_1.mix)(arrStart[i], arrTarget[i], t);
+        return mix(arrStart[i], arrTarget[i], t);
     });
 };
-exports.interpolateArray = interpolateArray;
 /**
  * check if all values of array is one.
  * @param arr array to evaluate
  * @returns true if all values are one
  */
-const isAllOne = (arr) => arr.every((el) => el === 1);
-exports.isAllOne = isAllOne;
+export const isAllOne = (arr) => arr.every((el) => el === 1);
 /**
  * check if all values of array is zero.
  * @param arr array to evaluate
  * @returns true if all values are zero
  */
-const isAllZero = (arr) => arr.every((el) => el === 0);
-exports.isAllZero = isAllZero;
+export const isAllZero = (arr) => arr.every((el) => el === 0);
 /**
  * check if any value of array is one
  * @param arr array to evaluate
  * @returns true if any value is one.
  */
-const isAnyOne = (arr) => arr.some((el) => el === 1);
-exports.isAnyOne = isAnyOne;
+export const isAnyOne = (arr) => arr.some((el) => el === 1);
 /**
  * check if any value of array is zero
  * @param arr array to evaluate
  * @returns true if any value is zero.
  */
-const isAnyZero = (arr) => arr.some((el) => el === 0);
-exports.isAnyZero = isAnyZero;
+export const isAnyZero = (arr) => arr.some((el) => el === 0);
 /**
  * convert object key:value pairs into simple array of values
  * @param obj
  * @param keys array of string keys. order is preserved.
  * @returns
  */
-const objectToArray = (obj, keys) => {
+export const objectToArray = (obj, keys) => {
     return keys.map((key) => obj[key]);
 };
-exports.objectToArray = objectToArray;
 /**
  * helper function to get object values inside an array. all objects must have same keys present.
  *
@@ -142,7 +129,7 @@ exports.objectToArray = objectToArray;
  * @param objKey key string of object inside source array
  * @returns array
  */
-const unwrapArrayOfObjects = (arr, objKey) => {
+export const unwrapArrayOfObjects = (arr, objKey) => {
     return Array(arr.length)
         .fill(null)
         .map((_, i) => {
@@ -154,5 +141,4 @@ const unwrapArrayOfObjects = (arr, objKey) => {
         }
     });
 };
-exports.unwrapArrayOfObjects = unwrapArrayOfObjects;
 //# sourceMappingURL=index.js.map
