@@ -7,7 +7,7 @@
  * @param arr
  * @returns
  */
-export declare const accumulate: (arr: number[], precision?: number) => number[];
+declare const accumulate: (arr: number[], precision?: number) => number[];
 /**
  * add to array in-place while limiting how many to keep history.
  *
@@ -18,20 +18,20 @@ export declare const accumulate: (arr: number[], precision?: number) => number[]
  * @param mode insert where? "first" (default) | "last"
  * @returns updated array
  */
-export declare const addToArray: <T>(arr: T[], entry: T, newArrayLen: number, mode?: "first" | "last") => T[];
+declare const addToArray: <T>(arr: T[], entry: T, newArrayLen: number, mode?: "first" | "last") => T[];
 /**
  * create a new array with given length and maps values
  * @param n length of generated array
  * @param fn callback function that goes into map(fn)
  * @returns new array with mapped values
  */
-export declare const fillAndMap: <T>(n: number, fn: (el: null, idx: number) => T) => T[];
+declare const fillAndMap: <T>(n: number, fn: (el: null, idx: number) => T) => T[];
 /**
  * check for elements with non-zero value and return indices
  * @param arr array to evaluate
  * @returns array of indices with non-zero values
  */
-export declare const getNonZeroIndices: (arr: number[]) => number[];
+declare const getNonZeroIndices: (arr: number[]) => number[];
 /**
  * interpolates between two 1d array of any size. for now, numbers only.
  *
@@ -42,38 +42,38 @@ export declare const getNonZeroIndices: (arr: number[]) => number[];
  * @param t 0..1
  * @returns 1d array
  */
-export declare const interpolateArray: (arrStart: number[], arrTarget: number[], t: number) => number[];
+declare const interpolateArray: (arrStart: number[], arrTarget: number[], t: number) => number[];
 /**
  * check if all values of array is one.
  * @param arr array to evaluate
  * @returns true if all values are one
  */
-export declare const isAllOne: (arr: number[]) => boolean;
+declare const isAllOne: (arr: number[]) => boolean;
 /**
  * check if all values of array is zero.
  * @param arr array to evaluate
  * @returns true if all values are zero
  */
-export declare const isAllZero: (arr: number[]) => boolean;
+declare const isAllZero: (arr: number[]) => boolean;
 /**
  * check if any value of array is one
  * @param arr array to evaluate
  * @returns true if any value is one.
  */
-export declare const isAnyOne: (arr: number[]) => boolean;
+declare const isAnyOne: (arr: number[]) => boolean;
 /**
  * check if any value of array is zero
  * @param arr array to evaluate
  * @returns true if any value is zero.
  */
-export declare const isAnyZero: (arr: number[]) => boolean;
+declare const isAnyZero: (arr: number[]) => boolean;
 /**
  * convert object key:value pairs into simple array of values
  * @param obj
  * @param keys array of string keys. order is preserved.
  * @returns
  */
-export declare const objectToArray: <T>(obj: {
+declare const objectToArray: <T>(obj: {
     [key: string]: T;
 }, keys: string[]) => T[];
 /**
@@ -84,7 +84,8 @@ export declare const objectToArray: <T>(obj: {
  * @param objKey key string of object inside source array
  * @returns array
  */
-export declare const unwrapArrayOfObjects: <T>(arr: {
+declare const unwrapArrayOfObjects: <T>(arr: {
     [key: string]: T;
 }[], objKey: string) => T[];
-//# sourceMappingURL=index.d.ts.map
+
+export { accumulate, addToArray, fillAndMap, getNonZeroIndices, interpolateArray, isAllOne, isAllZero, isAnyOne, isAnyZero, objectToArray, unwrapArrayOfObjects };
