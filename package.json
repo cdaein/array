@@ -21,7 +21,7 @@
     "vitest": "^0.28.5"
   },
   "dependencies": {
-    "@daeinc/math": "^0.5.0"
+    "@daeinc/math": "^0.6.0"
   },
   "publishConfig": {
     "access": "public",
