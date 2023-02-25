@@ -2,8 +2,9 @@
   "name": "@daeinc/array",
   "version": "0.5.0",
   "description": "Array utilities",
-  "types": "./dist/index.d.ts",
+  "type": "module",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "/dist"
   ],
@@ -11,13 +12,14 @@
     "watch": "tsc --watch",
     "test": "jest --watch",
     "demo": "parcel ./demo/demo.html --dist-dir ./demo/build/",
-    "build": "tsc --build --clean && tsc --build"
+    "build": "tsc --noemit && tsup"
   },
   "author": "Daeinc",
   "license": "MIT",
   "devDependencies": {
     "jest": "^29.3.1",
-    "ts-jest": "^29.0.5"
+    "ts-jest": "^29.0.5",
+    "tsup": "^6.6.3"
   },
   "dependencies": {
     "@daeinc/math": "^0.5.0"
