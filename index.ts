@@ -16,7 +16,7 @@ export const accumulate = (arr: number[], precision = 4) => {
     sum = sum + arr[i];
     result.push(sum);
   }
-  return result.map((val) => roundF(val, 4));
+  return result.map((val) => roundF(val, precision));
 };
 
 /**

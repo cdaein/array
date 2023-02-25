@@ -124,11 +124,11 @@ describe("isAnyZero()", () => {
 
 describe("unwrapArrayOfObjects()", () => {
   const arr1 = [{ name: "a" }, { name: "b" }, { name: "c" }];
-  const arr2 = [
-    { name: "a" },
-    { name: "b", city: "lima" },
-    { name: "c", city: "bogota" },
-  ];
+  // const arr2 = [
+  //   { name: "a" },
+  //   { name: "b", city: "lima" },
+  //   { name: "c", city: "bogota" },
+  // ];
   const arr3 = [{ val: 3 }, { val: 2 }];
   test("handles array with single key objects", () => {
     expect(unwrapArrayOfObjects(arr1, "name")).toEqual(["a", "b", "c"]);
