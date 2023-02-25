@@ -10,7 +10,7 @@ import { mix, roundF } from "@daeinc/math";
  * @returns
  */
 export const accumulate = (arr: number[], precision = 4) => {
-  const result = [];
+  const result: number[] = [];
   let sum = 0;
   for (let i = 0; i < arr.length; i++) {
     sum = sum + arr[i];
@@ -68,7 +68,7 @@ export const fillAndMap = <T>(
  * @returns array of indices with non-zero values
  */
 export const getNonZeroIndices = (arr: number[]): number[] => {
-  const result = [];
+  const result: number[] = [];
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] !== 0) result.push(i);
   }
@@ -83,22 +83,25 @@ export const getNonZeroIndices = (arr: number[]): number[] => {
  * @param arrStart array to start from
  * @param arrTarget array to interpolate to
  * @param t 0..1
+ * @param out output array (will be mutated)
  * @returns 1d array
  */
 export const interpolateArray = (
   arrStart: number[],
   arrTarget: number[],
-  t: number
+  t: number,
+  out?: number[]
 ) => {
   if (arrStart.length === 0 || arrTarget.length === 0)
     throw new Error("interpolateArray(): arrays cannot be empty");
   if (arrStart.length !== arrTarget.length)
     throw new Error("interpolateArray(): length must be same");
-  return Array(arrStart.length)
-    .fill(0)
-    .map((_, i) => {
-      return mix(arrStart[i], arrTarget[i], t);
-    });
+
+  out = out || new Array(arrStart.length);
+  for (let i = 0; i < arrStart.length; i++) {
+    out[i] = mix(arrStart[i], arrTarget[i], t);
+  }
+  return out;
 };
 
 /**

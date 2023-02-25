@@ -84,6 +84,11 @@ describe("interpolateArray()", () => {
   test("returns in-between values at any t=0..1", () => {
     expect(interpolateArray(arr1, arr2, 0.5)).toStrictEqual([5, 15, 25, 35]);
   });
+  test("mutates existing array", () => {
+    const arr1 = [0, 1, 2];
+    const arr2 = [2, 3, 4];
+    expect(interpolateArray(arr1, arr2, 0.5, arr1)).toStrictEqual(arr1);
+  });
 });
 
 describe("isAllOne()", () => {
